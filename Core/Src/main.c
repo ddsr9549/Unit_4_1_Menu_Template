@@ -72,15 +72,20 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 /* â"€â"€ Main â"€â"€ */
 int main(void)
 {
+  /* BLINK TEST — PA5 = LD2 on NUCLEO */
+  RCC->AHB2ENR |= (1<<0);
+  GPIOA->MODER = (GPIOA->MODER & ~(3<<10)) | (1<<10);
+  for(int i=0;i<5;i++){GPIOA->ODR^=(1<<5);for(volatile int d=0;d<500000;d++);}
+
     HAL_Init();
     SystemClock_Config();
 
     /* Peripheral init â€" NO SPI (LCD not used) */
     MX_GPIO_Init();
     MX_USART2_UART_Init();
-    // MX_ADC1_Init();
-    MX_ADC2_Init();
-    // // MX_TIM3_Init(); // TEMP DISABLED
+    MX_ADC1_Init();
+    // MX_ADC2_Init();
+    MX_TIM3_Init();
     MX_TIM4_Init();
     MX_TIM6_Init();
     MX_TIM7_Init();
@@ -104,7 +109,7 @@ int main(void)
     buzzer_cfg.tick_freq_hz = BUZZER_TICK_FREQ;
     buzzer_cfg.min_freq_hz  = BUZZER_MIN_FREQ;
     buzzer_cfg.max_freq_hz  = BUZZER_MAX_FREQ;
-    buzzer_init(&buzzer_cfg);
+    // buzzer_init(&buzzer_cfg);
 
     /* â"€â"€ LED PWM â"€â"€ */
     memset(&pwm_cfg, 0, sizeof(pwm_cfg));
@@ -113,9 +118,9 @@ int main(void)
     pwm_cfg.tick_freq_hz = LED_TICK_FREQ;
     pwm_cfg.min_freq_hz  = 10;
     pwm_cfg.max_freq_hz  = 50000;
-    PWM_Init(&pwm_cfg);
-    PWM_SetFreq(&pwm_cfg, LED_PWM_FREQ);
-    PWM_SetDuty(&pwm_cfg, LED_BRIGHTNESS_MENU);
+    // PWM_Init(&pwm_cfg);
+    // PWM_SetFreq(&pwm_cfg, LED_PWM_FREQ);
+    // PWM_SetDuty(&pwm_cfg, LED_BRIGHTNESS_MENU);
 
     /* â"€â"€ Joystick â"€â"€ */
     memset(&joystick_cfg, 0, sizeof(joystick_cfg));
@@ -126,13 +131,13 @@ int main(void)
     joystick_cfg.center_x      = JOYSTICK_CENTER_X;
     joystick_cfg.center_y      = JOYSTICK_CENTER_Y;
     joystick_cfg.deadzone      = JOYSTICK_DEADZONE;
-    Joystick_Init(&joystick_cfg);
+    // Joystick_Init(&joystick_cfg);
 
     /* â"€â"€ 7-Segment (starts TIM6 ISR internally) â"€â"€ */
-    SevenSeg_Init();
+    // SevenSeg_Init(); // TEMP
 
     /* â"€â"€ Buttons â"€â"€ */
-    Input_Init();
+    // Input_Init();
 
     /* â"€â"€ Menu â"€â"€ */
     Menu_Init(&menu);
@@ -145,7 +150,7 @@ int main(void)
     LCD_Refresh(&lcd_cfg);
 
     SevenSeg_SetNumber(88);
-    PWM_SetDuty(&pwm_cfg, 80);
+    // PWM_SetDuty(&pwm_cfg, 80);
 
     /* Startup beep sequence */
     RGB_SET_EASY();
@@ -160,7 +165,7 @@ int main(void)
 
     HAL_Delay(500);
     SevenSeg_Clear();
-    PWM_SetDuty(&pwm_cfg, LED_BRIGHTNESS_MENU);
+    // PWM_SetDuty(&pwm_cfg, LED_BRIGHTNESS_MENU);
 
     printf("MultiGame L476RG Ready.\r\n");
 
@@ -172,7 +177,7 @@ int main(void)
         switch (current_state)
         {
             case MENU_STATE_HOME:
-                PWM_SetDuty(&pwm_cfg, LED_BRIGHTNESS_MENU);
+                // PWM_SetDuty(&pwm_cfg, LED_BRIGHTNESS_MENU);
                 SevenSeg_Clear();
                 current_state = Menu_Run(&menu);
                 break;
