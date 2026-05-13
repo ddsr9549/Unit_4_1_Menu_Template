@@ -15,6 +15,8 @@ static const char* menu_options[] = {
     "Game 2", 
     "Game 3"
 };
+Difficulty g_difficulty = DIFFICULTY_EASY;
+
 #define NUM_MENU_OPTIONS 3
 
 // Frame rate for menu (in milliseconds)
@@ -117,4 +119,13 @@ MenuState Menu_Run(MenuSystem* menu) {
     }
     
     return selected_game;  // Return which game was selected
+}
+
+uint32_t Menu_GetTimeLimit(void) {
+    switch (g_difficulty) {
+        case DIFFICULTY_EASY:   return 60;
+        case DIFFICULTY_MEDIUM: return 45;
+        case DIFFICULTY_HARD:   return 30;
+        default:                return 60;
+    }
 }

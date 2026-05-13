@@ -37,4 +37,20 @@ void Menu_Init(MenuSystem* menu);
  */
 MenuState Menu_Run(MenuSystem* menu);
 
+// ==============================================
+// DIFFICULTY SETTINGS
+// ==============================================
+typedef enum {
+    DIFFICULTY_EASY = 0,
+    DIFFICULTY_MEDIUM,
+    DIFFICULTY_HARD
+} Difficulty;
+
+extern Difficulty g_difficulty;
+
+/**
+ * @brief Get the time limit for the current difficulty (seconds)
+ */
+uint32_t Menu_GetTimeLimit(void);
+
 #endif // MENU_H
