@@ -5,7 +5,7 @@
 #include "stm32l4xx_hal.h"
 #include <stdio.h>
 
-extern ST7789V2_cfg_t cfg0;  // LCD configuration from main.c
+extern ST7789V2_cfg_t lcd_cfg;  // LCD configuration from main.c
 extern Joystick_cfg_t joystick_cfg;  // Joystick configuration
 extern Joystick_t joystick_data;     // Current joystick readings
 
@@ -49,7 +49,7 @@ static void render_home_menu(MenuSystem* menu) {
     // Instructions
     LCD_printString("Press BT3", 50, 240, 1, 1);
     
-    LCD_Refresh(&cfg0);
+    LCD_Refresh(&lcd_cfg);
 }
 
 // ==============================================
