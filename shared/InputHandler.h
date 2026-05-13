@@ -18,6 +18,10 @@ typedef struct {
     uint8_t btn3_pressed;  // 1 if BT3 was pressed this frame, 0 otherwise
 } InputState;
 
+/* Aliases so game code can use descriptive names */
+#define btn_reset_pressed  btn2_pressed
+#define btn_select_pressed btn3_pressed
+
 // Global input state (read by menu/games in their Update functions)
 extern InputState current_input;
 
