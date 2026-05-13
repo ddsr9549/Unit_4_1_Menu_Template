@@ -87,6 +87,12 @@ void Error_Handler(void);
 #define BTN6_Pin          GPIO_PIN_7
 #define BTN7_Pin          GPIO_PIN_8
  
+/* USART2 virtual COM port (ST-Link) — PA2 = TX, PA3 = RX */
+#define USART_TX_Pin        GPIO_PIN_2
+#define USART_TX_GPIO_Port  GPIOA
+#define USART_RX_Pin        GPIO_PIN_3
+#define USART_RX_GPIO_Port  GPIOA
+ 
 /* Arduino-compatible analog pin aliases (NUCLEO-L476RG CN8 connector)
  * A0 = PA0   A1 = PA1   A2 = PA4   A3 = PB0   A4 = PC1   A5 = PC0
  */
@@ -116,3 +122,4 @@ extern volatile uint32_t g_tim7_ticks;
 #endif
  
 #endif /* __MAIN_H */
+ 
