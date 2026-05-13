@@ -23,7 +23,9 @@
  *  BOARD SELECTION
  * ============================================================ */
 //#define BOARD_F446RE
+#ifndef BOARD_L476RG
 #define BOARD_L476RG
+#endif
 
 /* ============================================================
  *  SYSTEM CLOCK
