@@ -87,6 +87,22 @@ void Error_Handler(void);
 #define BTN6_Pin          GPIO_PIN_7
 #define BTN7_Pin          GPIO_PIN_8
  
+/* Arduino-compatible analog pin aliases (NUCLEO-L476RG CN8 connector)
+ * A0 = PA0   A1 = PA1   A2 = PA4   A3 = PB0   A4 = PC1   A5 = PC0
+ */
+#define A0_Pin          GPIO_PIN_0
+#define A0_GPIO_Port    GPIOA
+#define A1_Pin          GPIO_PIN_1
+#define A1_GPIO_Port    GPIOA
+#define A2_Pin          GPIO_PIN_4
+#define A2_GPIO_Port    GPIOA
+#define A3_Pin          GPIO_PIN_0
+#define A3_GPIO_Port    GPIOB
+#define A4_Pin          GPIO_PIN_1
+#define A4_GPIO_Port    GPIOC
+#define A5_Pin          GPIO_PIN_0
+#define A5_GPIO_Port    GPIOC
+ 
 /* USER CODE BEGIN Private defines */
  
 /* Volatile tick counters incremented by TIM6 / TIM7 ISRs */
