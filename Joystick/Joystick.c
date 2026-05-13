@@ -217,7 +217,7 @@ Vector2D Joystick_GetCoord(int16_t x, int16_t y, uint16_t center_x, uint16_t cen
  * This ensures that users feel equal resistance pushing the stick in all directions,
  * and maximizes the effective range of control at the diagonal corners.
  * 
- * **Algorithm:**
+ * *Algorithm:*
  * The mapping formula is:
  * - x' = x * sqrt(1 - y²/2)
  * - y' = y * sqrt(1 - x²/2)
@@ -225,12 +225,12 @@ Vector2D Joystick_GetCoord(int16_t x, int16_t y, uint16_t center_x, uint16_t cen
  * This is the "square to circle" transformation, which preserves the magnitude
  * of the input vector while stretching the corners outward.
  * 
- * **Effect:**
+ * *Effect:*
  * - At corners (±1, ±1): magnitude decreases from √2 to 1.0
  * - At cardinal directions (±1, 0) or (0, ±1): magnitude unchanged at 1.0
  * - At origin (0, 0): magnitude stays 0.0
  * 
- * **Reference:** http://mathproofs.blogspot.co.uk/2005/07/mapping-square-to-circle.html
+ * *Reference:* http://mathproofs.blogspot.co.uk/2005/07/mapping-square-to-circle.html
  */
 Vector2D Joystick_MapToCircle(Vector2D coord)
 {
@@ -251,7 +251,7 @@ Vector2D Joystick_MapToCircle(Vector2D coord)
  * 
  * @details Converts Cartesian coordinates to polar form for easier magnitude and heading control.
  * 
- * **Coordinate System (Compass Heading):**
+ * *Coordinate System (Compass Heading):*
  * - 0° = North (up): point (0, 1)
  * - 90° = East (right): point (1, 0)
  * - 180° = South (down): point (0, -1)
@@ -259,16 +259,16 @@ Vector2D Joystick_MapToCircle(Vector2D coord)
  * 
  * Angle increases clockwise when viewed from above (standard compass convention).
  * 
- * **Magnitude:**
+ * *Magnitude:*
  * - 0.0 = stick at center
  * - 1.0 = stick fully deflected (at cardinal directions)
  * 
- * **Center Detection:**
+ * *Center Detection:*
  * If magnitude is effectively zero (deadzone already filtered raw values),
  * angle is set to -1.0 as an invalid marker. Center filtering happens
  * in Joystick_Read() via the deadzone parameter.
  * 
- * **Algorithm:**
+ * *Algorithm:*
  * 1. Swap axes and negate y to convert from mathematical angle (0°=East) to compass angle (0°=North)
  * 2. Calculate magnitude using Pythagorean theorem: mag = sqrt(x² + y²)
  * 3. Calculate angle using arctangent: angle = atan2(y, x) converted to degrees
@@ -302,4 +302,3 @@ Polar Joystick_GetPolar(Joystick_t* data)
     p.angle = angle;
     return p;
 }
-
