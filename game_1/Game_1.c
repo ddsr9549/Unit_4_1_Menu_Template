@@ -1,12 +1,12 @@
-**
+/**
  * @file Game_1.c
- * @brief Shapes Game — 4 rotating question types
+ * @brief Shapes Game -- 4 rotating question types
  *
  * Screen: 240x240 pixels
- * Level 0: Speed race — watch 3 shapes animate, pick the fastest
- * Level 1: Shape Math — equation using shape values, pick numeric answer
- * Level 2: Shape Algebra — solve system of 2 equations, find sq+tri
- * Level 3: Find Shape — 3x3 grid, navigate and select correct size+colour
+ * Level 0: Speed race -- watch 3 shapes animate, pick the fastest
+ * Level 1: Shape Math -- equation using shape values, pick numeric answer
+ * Level 2: Shape Algebra -- solve system of 2 equations, find sq+tri
+ * Level 3: Find Shape -- 3x3 grid, navigate and select correct size+colour
  */
 
 #include "Game_1.h"
@@ -56,7 +56,7 @@ static const char*   GF_SZ_NAME[2]   = {"SMALL", "BIG"};
 #define FRAME_MS      100
 #define GRID_N        3
 
-/* Grid cell dimensions — fit 3x3 in 240x240 minus 48px header */
+/* Grid cell dimensions -- fit 3x3 in 240x240 minus 48px header */
 #define GCW           78    /* cell width  (3*78=234, left margin 3) */
 #define GCH           62    /* cell height (48 + 3*62 = 234)         */
 #define GX0            3
@@ -124,7 +124,7 @@ static void draw_header(const char *title)
     LCD_printString(buf, 4, 9, C_WHITE, 1);
     snprintf(buf, sizeof(buf), "T:%us", time_left);
     LCD_printString(buf, 190, 9, time_left <= 10 ? C_RED : C_WHITE, 1);
-    /* Timer bar — scaled to initial time limit */
+    /* Timer bar -- scaled to initial time limit */
     uint8_t bar = (max_time > 0) ? (uint8_t)((time_left * 200U) / max_time) : 0;
     LCD_Draw_Rect(0, 28, 240, 4, C_GREY, 1);
     if (bar > 0) LCD_Draw_Rect(0, 28, bar, 4, time_left <= 10 ? C_RED : C_GREEN, 1);
@@ -176,7 +176,7 @@ static void draw_speed_q(void)
     static const uint16_t CX[3] = {40, 120, 200};
     for (int i = 0; i < 3; i++) {
         uint8_t hi = (i == q_cursor);
-        /* Box: y=50, height=110 → bottom y=160 */
+        /* Box: y=50, height=110 -> bottom y=160 */
         LCD_Draw_Rect(CX[i] - 32, 50, 64, 110, hi ? C_YELLOW : C_GREY, 0);
         if (hi) LCD_Draw_Rect(CX[i] - 31, 51, 62, 108, C_NAVY, 1);
         /* Shape centred inside box */

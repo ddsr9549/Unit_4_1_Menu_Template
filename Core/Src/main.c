@@ -1,4 +1,4 @@
-**
+/***
  * @file main.c
  * @brief MultiGame Console â€" Main Entry Point
  *
@@ -84,7 +84,7 @@ int main(void)
     MX_TIM4_Init();
     MX_TIM6_Init();
     MX_TIM7_Init();
-    /* NO MX_SPI2_Init — LCD driver handles SPI internally */
+    /* NO MX_SPI2_Init -- LCD driver handles SPI internally */
 
     /* ── LCD ── */
     memset(&lcd_cfg, 0, sizeof(lcd_cfg));

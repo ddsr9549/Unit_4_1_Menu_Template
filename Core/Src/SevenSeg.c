@@ -1,4 +1,4 @@
-**
+/**
  * @file SevenSeg.c
  * @brief Multiplexed dual 7-segment display driver
  */

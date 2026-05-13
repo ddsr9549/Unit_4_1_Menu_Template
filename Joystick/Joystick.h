@@ -191,7 +191,7 @@ void Joystick_Calibrate(Joystick_cfg_t* cfg);
  * 
  * @details Performs complete joystick processing:
  * - Reads raw ADC values for both X and Y axes
- * - Applies deadzone around center (values within deadzone → 0)
+ * - Applies deadzone around center (values within deadzone -> 0)
  * - Normalizes to Cartesian coordinates (-1.0 to 1.0)
  * - Applies circle mapping for uniform control feel
  * - Calculates polar coordinates (magnitude, angle)

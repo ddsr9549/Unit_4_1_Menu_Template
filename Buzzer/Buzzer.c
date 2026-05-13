@@ -1,6 +1,6 @@
-**
+/**
  * @file Buzzer.c
- * @brief PWM buzzer driver — adapted for STM32F4 (F446RE)
+ * @brief PWM buzzer driver -- adapted for STM32F4 (F446RE)
  *
  * Change from original: HAL include changed to stm32l4xx_hal.h
  * Everything else identical to original L4 driver.

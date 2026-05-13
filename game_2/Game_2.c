@@ -1,11 +1,11 @@
-**
+/**
  * @file Game_2.c
- * @brief Stroop Colour Game — 3 question types
+ * @brief Stroop Colour Game -- 3 question types
  *
  * Screen: 240x240 pixels
  * Each round:
- *   Phase 1 — flash a colour word written in a DIFFERENT ink colour
- *   Phase 2 — answer one of three question types:
+ *   Phase 1 -- flash a colour word written in a DIFFERENT ink colour
+ *   Phase 2 -- answer one of three question types:
  *     Type 0: "What was the INK colour?"   (ignore the word)
  *     Type 1: "What did the word SAY?"     (ignore the ink)
  *     Type 2: "Which has NOTHING in common with the word?"
@@ -174,7 +174,7 @@ static void draw_question(void)
 
     LCD_Draw_Line(0, 58, 240, 58, C_GREY);
 
-    /* 3 choices — centres at x=40, 120, 200 */
+    /* 3 choices -- centres at x=40, 120, 200 */
     static const uint16_t CX[3] = {40, 120, 200};
 
     if (q_type < 2) {

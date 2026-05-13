@@ -3,15 +3,15 @@
  * @brief Central hardware configuration for MultiGame Console
  *
  * LED System:
- *   Green LED (PB6)  — ON while game is running, OFF in menu
+ *   Green LED (PB6)  -- ON while game is running, OFF in menu
  *   RGB LED:
- *     R → PA10  G → PA11  B → PA12
+ *     R -> PA10  G -> PA11  B -> PA12
  *     Easy   = GREEN  (R=0 G=1 B=0)
  *     Medium = BLUE   (R=0 G=0 B=1)
  *     Hard   = RED    (R=1 G=0 B=0)
  *
  * LCD wiring per official README:
- *   MOSI→PB15  SCK→PB13  CS→PB12  DC→PB11  RST→PB2  BL→PB1
+ *   MOSI->PB15  SCK->PB13  CS->PB12  DC->PB11  RST->PB2  BL->PB1
  */
 
 #ifndef HW_CONFIG_H
@@ -40,7 +40,7 @@
 #endif
 
 /* ============================================================
- *  LCD ST7789V2 — SPI2
+ *  LCD ST7789V2 -- SPI2
  *  DC = PB11 per official README
  * ============================================================ */
 #define LCD_SPI             SPI2
@@ -58,7 +58,7 @@
 #define LCD_SCLK_PIN        GPIO_PIN_13
 
 /* ============================================================
- *  LED PWM — TIM4 CH1 (PB6)
+ *  LED PWM -- TIM4 CH1 (PB6)
  *  Brightness controlled via PWM duty cycle
  * ============================================================ */
 #define LED_TIM              htim4
@@ -68,9 +68,9 @@
 #define LED_BRIGHTNESS_MENU  30U         /* 30% duty in menu     */
 
 /* ============================================================
- *  GREEN LED — PB6 (same pin, driven by TIM4 PWM above)
+ *  GREEN LED -- PB6 (same pin, driven by TIM4 PWM above)
  *  ON while game running, OFF in menu
- *  Connect: PB6 → 330Ω → LED(+) → LED(-) → GND
+ *  Connect: PB6 -> 330Ω -> LED(+) -> LED(-) -> GND
  * ============================================================ */
 #define GREEN_LED_PORT      GPIOB
 #define GREEN_LED_PIN       GPIO_PIN_6
@@ -79,11 +79,11 @@
 #define GREEN_LED_OFF()  HAL_GPIO_WritePin(GREEN_LED_PORT, GREEN_LED_PIN, GPIO_PIN_RESET)
 
 /* ============================================================
- *  RGB LED — Simple GPIO (ON/OFF per colour)
- *  R → PA10  G → PA11  B → PA12
+ *  RGB LED -- Simple GPIO (ON/OFF per colour)
+ *  R -> PA10  G -> PA11  B -> PA12
  *
- *  Common Cathode: common pin → GND
- *  Common Anode:   common pin → 3V3
+ *  Common Cathode: common pin -> GND
+ *  Common Anode:   common pin -> 3V3
  *                  (invert logic: SET=OFF, RESET=ON)
  *
  *  Wire each pin via 330Ω resistor
@@ -117,7 +117,7 @@
 #define RGB_SET_HARD()    do { RGB_R_ON();  RGB_G_OFF(); RGB_B_OFF(); } while(0)
 
 /* ============================================================
- *  JOYSTICK — ADC1 (PA0=VRx, PA1=VRy)
+ *  JOYSTICK -- ADC1 (PA0=VRx, PA1=VRy)
  *  NOTE: Same pins, different channel numbers per MCU family:
  *    F446RE: PA0=IN0, PA1=IN1
  *    L476RG: PA0=IN5, PA1=IN6
@@ -138,7 +138,7 @@
 #define JOYSTICK_DEADZONE       200
 
 /* ============================================================
- *  POTENTIOMETER — ADC2 (PC0) — buzzer volume
+ *  POTENTIOMETER -- ADC2 (PC0) -- buzzer volume
  *  NOTE: Same pin, different channel numbers per MCU family:
  *    F446RE: PC0=IN10
  *    L476RG: PC0=IN1
@@ -157,7 +157,7 @@
 #define POT_MAX_VOL         100
 
 /* ============================================================
- *  BUZZER — TIM3 CH3 (PB0)
+ *  BUZZER -- TIM3 CH3 (PB0)
  * ============================================================ */
 #define BUZZER_TIM          htim3
 #define BUZZER_CHANNEL      TIM_CHANNEL_3
@@ -198,7 +198,7 @@
 #define BTN_DEBOUNCE_MS     200
 
 /* ============================================================
- *  COUNTDOWN TIMER — TIM7
+ *  COUNTDOWN TIMER -- TIM7
  * ============================================================ */
 #define COUNTDOWN_TIM       htim7
 
@@ -212,11 +212,11 @@
 /* ============================================================
  *  BUZZER FREQUENCIES PER LEVEL
  * ============================================================ */
-#define BUZZER_LEVEL1_FREQ  523     /* C5  — Easy   */
-#define BUZZER_LEVEL2_FREQ  659     /* E5  — Medium */
-#define BUZZER_LEVEL3_FREQ  784     /* G5  — Hard   */
-#define BUZZER_WIN_FREQ     1047    /* C6  — Correct answer */
-#define BUZZER_LOSE_FREQ    262     /* C4  — Wrong / timeout */
-#define BUZZER_SELECT_FREQ  440     /* A4  — Menu select */
+#define BUZZER_LEVEL1_FREQ  523     /* C5  -- Easy   */
+#define BUZZER_LEVEL2_FREQ  659     /* E5  -- Medium */
+#define BUZZER_LEVEL3_FREQ  784     /* G5  -- Hard   */
+#define BUZZER_WIN_FREQ     1047    /* C6  -- Correct answer */
+#define BUZZER_LOSE_FREQ    262     /* C4  -- Wrong / timeout */
+#define BUZZER_SELECT_FREQ  440     /* A4  -- Menu select */
 
 #endif /* HW_CONFIG_H */

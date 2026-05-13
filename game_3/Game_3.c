@@ -4,14 +4,14 @@
  *
  * Screen: 240x240 pixels
  * Difficulty sets both grid size and word length:
- *   Easy   → 5×5 grid, 3-letter words, horizontal only
- *   Medium → 6×6 grid, 4-letter words, horizontal + vertical
- *   Hard   → 7×7 grid, 5-letter words, all 8 directions
+ *   Easy   -> 5×5 grid, 3-letter words, horizontal only
+ *   Medium -> 6×6 grid, 4-letter words, horizontal + vertical
+ *   Hard   -> 7×7 grid, 5-letter words, all 8 directions
  *
  * Player flow:
  *   1. Navigate cursor to the START letter of the word, press SELECT.
  *   2. Navigate cursor to the END letter, press SELECT.
- *   3. If the cells between start and end spell the hidden word → correct!
+ *   3. If the cells between start and end spell the hidden word -> correct!
  *   Press RESET in phase 2 to cancel and reselect start.
  *   Wrong selection: -5 seconds.
  */
@@ -196,10 +196,10 @@ static void draw_screen(void)
     LCD_Fill_Buffer(C_BLACK);
     draw_header();
 
-    /* Word hint — "Find: WORD" on one line using font 2 */
+    /* Word hint -- "Find: WORD" on one line using font 2 */
     char hint[20];
     snprintf(hint, sizeof(hint), "Find: %s", target_word);
-    LCD_printString(hint, 4, 34, C_YELLOW, 2);   /* font 2 = 14px tall → y+14=48 */
+    LCD_printString(hint, 4, 34, C_YELLOW, 2);   /* font 2 = 14px tall -> y+14=48 */
 
     /* Phase instruction */
     if (phase == 0)
@@ -208,7 +208,7 @@ static void draw_screen(void)
         LCD_printString("SELECT=end  RESET=undo", 4, 50, C_ORANGE, 1);
 
     /*
-     * Grid layout — fits within 240x240:
+     * Grid layout -- fits within 240x240:
      *   grid_top = 62
      *   cw = 240 / cols  (exact integer)
      *   ch = (240 - 62) / rows  (leaves bottom margin)
@@ -239,7 +239,7 @@ static void draw_screen(void)
             uint8_t border_col = is_cur ? C_YELLOW : (is_sel ? C_CYAN : C_GREY);
             LCD_Draw_Rect(x, y, cw, ch, border_col, 0);
 
-            /* Letter — centred in cell */
+            /* Letter -- centred in cell */
             char letter[2] = {grid[r][c], '\0'};
             uint8_t lcol = is_cur ? C_WHITE : (is_sel ? C_BLACK : C_CYAN);
             uint16_t lx = x + (cw > 12 ? (cw - 10) / 2 : 1);

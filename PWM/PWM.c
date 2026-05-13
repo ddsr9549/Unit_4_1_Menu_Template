@@ -1,6 +1,6 @@
-**
+/**
  * @file PWM.c
- * @brief General-purpose PWM driver — adapted for STM32F4 (F446RE)
+ * @brief General-purpose PWM driver -- adapted for STM32F4 (F446RE)
  * Change: HAL include updated to stm32l4xx_hal.h
  * To migrate back to L476RG: change include to stm32l4xx_hal.h
  */
